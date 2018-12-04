@@ -94,6 +94,7 @@ function ready(d) {
               .attr("fill", colorRange(val))
               .style('stroke', 'black').style('stroke-width', 0.5)
               .attr("opacity", 0.75)
+              .attr("class", "map-path")
             }
       }
 
@@ -106,26 +107,26 @@ function ready(d) {
     document.getElementById("range").innerHTML=time[value];
     time_period = time[value];
 
-    d3.selectAll("path").remove();
+    d3.selectAll("path.map-path").remove();
 
-      svg.append("path")
-        .datum(topojson.merge(us, us.objects.states.geometries.filter(d => d.id !== "02" && d.id !== "15")))
-        .attr("fill", "rgba(0,0,0,0)")
-        .attr("stroke", "#fff")
-        .attr("d", d3.geoPath())
-        .attr("transform", function(d) {
-          return "scale(" + 0.85 + ")"
-        });
+    //   svg.append("path")
+    //     .datum(topojson.merge(us, us.objects.states.geometries.filter(d => d.id !== "02" && d.id !== "15")))
+    //     .attr("fill", "rgba(0,0,0,0)")
+    //     .attr("stroke", "#fff")
+    //     .attr("d", d3.geoPath())
+    //     .attr("transform", function(d) {
+    //       return "scale(" + 0.85 + ")"
+    //     });
 
-    svg.append("path")
-        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
-        .attr("fill", "rgba(0,0,0,0)")
-        .attr("stroke", "#fff")
-        .attr("stroke-linejoin", "round")
-        .attr("d", d3.geoPath())
-        .attr("transform", function(d) {
-          return "scale(" + 0.85 + ")"
-        });
+    // svg.append("path")
+    //     .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+    //     .attr("fill", "rgba(0,0,0,0)")
+    //     .attr("stroke", "#fff")
+    //     .attr("stroke-linejoin", "round")
+    //     .attr("d", d3.geoPath())
+    //     .attr("transform", function(d) {
+    //       return "scale(" + 0.85 + ")"
+    //     });
        
     if (time_period==1) {
 
@@ -137,8 +138,10 @@ function ready(d) {
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
               .attr("fill", colorRange(val))
-              .style('stroke', 'black').style('stroke-width', 0.5)
               .attr("opacity", 0.75)
+              .attr("class", "map-path")
+              .style('stroke', 'black').style('stroke-width', 0.5);
+              ;
           }
     }}
     else if (time_period==2) {
@@ -150,8 +153,10 @@ function ready(d) {
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
               .attr("fill", colorRange(val))
-              .style('stroke', 'black').style('stroke-width', 0.5)
               .attr("opacity", 0.75)
+              .attr("class", "map-path")
+              .style('stroke', 'black').style('stroke-width', 0.5);
+              
           }
     }}
     else if (time_period==3) {
@@ -163,8 +168,10 @@ function ready(d) {
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
               .attr("fill", colorRange(val))
-              .style('stroke', 'black').style('stroke-width', 0.5)
               .attr("opacity", 0.75)
+              .attr("class", "map-path")
+              .style('stroke', 'black').style('stroke-width', 0.5);
+              
           }
     }}
   }

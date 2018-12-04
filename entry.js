@@ -73,22 +73,23 @@ function handleStepEnter(response, data) {
 	// }
 
 	// // update graphic1 based on step 1
-	if (step._groups[0][0].className === 'step is-active') {
-		time_period = "1";
-		d3.select('#timeslide')._groups[0][0].value = "0";
+	// if (step._groups[0][0].className === 'step is-active') {
+	// 	time_period = "1";
+	// 	d3.select('#timeslide')._groups[0][0].value = "0";
 
-		var val = data.properties.five;
+	// 	var val = data.properties.five;
 
-		if (val != 0) {
-			var node = svg.append("path")
-			.datum({type:"Feature", geometry:{type: "Point", coordinates:[data.properties.long,data.properties.lat]}})
-			.attr("d", d3.geoPath(projection).pointRadius(4))
-			.attr("fill", colorRange(val))
-			.style('stroke', 'black').style('stroke-width', 0.5)
-			.attr("opacity", 0.75)
-		}
+	// 	if (val != 0) {
+	// 		var node = svg.append("path")
+	// 		.datum({type:"Feature", geometry:{type: "Point", coordinates:[data.properties.long,data.properties.lat]}})
+	// 		.attr("d", d3.geoPath(projection).pointRadius(4))
+	// 		.attr("fill", colorRange(val))
+	// 		.attr("opacity", 0.75)
+	// 		.attr("class", "map-path")
+	// 		.style('stroke', 'black').style('stroke-width', 0.5);
+	// 	}
 
-	}
+	// }
 
 	// // update graphic1 based on step 2
 	// if (step._groups[0][1].className === 'step is-active') {
