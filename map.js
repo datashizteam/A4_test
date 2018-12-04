@@ -105,8 +105,30 @@ function ready(d) {
   function update(value) {
     document.getElementById("range").innerHTML=time[value];
     time_period = time[value];
+
+    d3.selectAll("path").remove();
+
+      svg.append("path")
+        .datum(topojson.merge(us, us.objects.states.geometries.filter(d => d.id !== "02" && d.id !== "15")))
+        .attr("fill", "rgba(0,0,0,0)")
+        .attr("stroke", "#fff")
+        .attr("d", d3.geoPath())
+        .attr("transform", function(d) {
+          return "scale(" + 0.85 + ")"
+        });
+
+    svg.append("path")
+        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+        .attr("fill", "rgba(0,0,0,0)")
+        .attr("stroke", "#fff")
+        .attr("stroke-linejoin", "round")
+        .attr("d", d3.geoPath())
+        .attr("transform", function(d) {
+          return "scale(" + 0.85 + ")"
+        });
        
     if (time_period==1) {
+
       for (let d of data){
           var val = d.properties.five;
 
