@@ -56,19 +56,19 @@ function ready(d) {
   var us_states = topojson.feature(us, us.objects.states);
 
   function colorRange(p) {
-    if (p==0) { return "#F5F5F5"; }
-    else if (p==1) { return "#ed8181"; }
-    else if (p==2) { return "#e12d2d"; }
-    else if (p==3) { return "#871b1b"; }
-    else if (p==8) { return "#2d0909"; }
-    else if (p==9) { return "#000000"; }};
+    if (p==0) { return "#ff3e28"; }
+    else if (p==1) { return "#ff3e28"; }
+    else if (p==2) { return "#ff3e28"; }
+    else if (p==3) { return "#ff3e28"; }
+    else if (p==8) { return "#8c0000"; }
+    else if (p==9) { return "#700000"; }};
 
 
   svg.append("path")
         .datum(topojson.merge(us, us.objects.states.geometries.filter(d => d.id !== "02" && d.id !== "15")))
         .attr("fill", "rgba(0,0,0,0)")
         .attr("stroke", "#fff")
-        .attr("stroke-wdith", 0.75)
+        .attr("stroke-width", 0.75)
         .attr("d", d3.geoPath())
         .attr("transform", function(d) {
           return "scale(" + 0.85 + ")"
@@ -92,8 +92,8 @@ function ready(d) {
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
               .attr("fill", colorRange(val))
-              .style('stroke', 'black').style('stroke-width', 0.5)
-              .attr("opacity", 0.75)
+              // .style('stroke', 'black').style('stroke-width', 0.5)
+              .attr("opacity", 0.4)
               .attr("class", "map-path")
             }
       }
@@ -137,11 +137,11 @@ function ready(d) {
             var node = svg.append("path")
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
-              .attr("fill", colorRange(val))
-              .attr("opacity", 0.75)
+              .attr("fill", "#ff5542")
+              .attr("opacity", 0.4)
               .attr("class", "map-path")
               .style('stroke', 'black').style('stroke-width', 0.5);
-              ;
+              
           }
     }}
     else if (time_period==2) {
@@ -152,8 +152,8 @@ function ready(d) {
             var node = svg.append("path")
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
-              .attr("fill", colorRange(val))
-              .attr("opacity", 0.75)
+              .attr("fill", "#ff5542")
+              .attr("opacity", 0.4)
               .attr("class", "map-path")
               .style('stroke', 'black').style('stroke-width', 0.5);
               
@@ -167,8 +167,8 @@ function ready(d) {
             var node = svg.append("path")
               .datum({type:"Feature", geometry:{type: "Point", coordinates:[d.properties.long,d.properties.lat]}})
               .attr("d", d3.geoPath(projection).pointRadius(4))
-              .attr("fill", colorRange(val))
-              .attr("opacity", 0.75)
+              .attr("fill", "#ff5542")
+              .attr("opacity", 0.4)
               .attr("class", "map-path")
               .style('stroke', 'black').style('stroke-width', 0.5);
               
