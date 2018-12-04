@@ -1,4 +1,4 @@
-var width = 1200,
+var width = 1000,
     height = 600
 
 var svg = d3.select(".scroll__figure").append("svg")
@@ -10,8 +10,8 @@ var time = ["1","2","3"];
 // var g = svg.append("g");
 
 var projection = d3.geoAlbersUsa()
-    .scale(1280)
-    .translate([480, 300]);
+    .scale(1088)
+    .translate([408, 255]);
 
 // d3.json("https://gist.githubusercontent.com/krwarner/ba149b4ed187b80cce4b9aad2135ddae/raw/8d564df8079729c819781819a084c9a1587dc434/congress_topo.json").then(
 // //background map
@@ -67,14 +67,22 @@ function ready(d) {
   svg.append("path")
         .datum(topojson.merge(us, us.objects.states.geometries.filter(d => d.id !== "02" && d.id !== "15")))
         .attr("fill", "rgba(0,0,0,0)")
-        .attr("d", d3.geoPath());
+        .attr("stroke", "#fff")
+        .attr("stroke-wdith", 0.75)
+        .attr("d", d3.geoPath())
+        .attr("transform", function(d) {
+          return "scale(" + 0.85 + ")"
+        });
 
     svg.append("path")
         .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
         .attr("fill", "rgba(0,0,0,0)")
         .attr("stroke", "#fff")
         .attr("stroke-linejoin", "round")
-        .attr("d", d3.geoPath());
+        .attr("d", d3.geoPath())
+        .attr("transform", function(d) {
+          return "scale(" + 0.85 + ")"
+        });
 
 
       for (let d of data){
